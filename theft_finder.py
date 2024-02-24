@@ -2,21 +2,17 @@ import pandas as pd
 import mysql.connector
 from datetime import datetime, timedelta
 
-# Connect to the MySQL server
-db = mysql.connector.connect(user='fuel', password='CHANGE_ME', host='localhost', database='fuel')
-
 # Set the percentage drop
 drop_percentage = 10
 
 # Connect to the MySQL server
-db = mysql.connector.connect(user='fuel', password='fuelpass', host='localhost', database='fuel')
+db = mysql.connector.connect(user='fuel', password='CHANGE_ME', host='localhost', database='fuel')
 
 # Create a new cursor
 cursor = db.cursor()
 
-# Execute a query to fetch data for the last 24 hours
-query = f"SELECT date_time, fuel FROM fuel_data ORDER BY date_time ASC"
-cursor.execute(query)
+# Execute a query to fetch all the  data
+cursor.execute("SELECT date_time, fuel FROM fuel_data ORDER BY date_time ASC")
 
 # Fetch all the rows
 rows = cursor.fetchall()
